@@ -27,7 +27,7 @@ class MRIDataset(Dataset):
 
         elif config.tf == "crop":
             self.transforms.register(Crop(np.ceil(0.75*np.array(config.input_size)), "random", resize=True),
-                                     probability=0.5)
+                                     probability=1)
 
         if training:
             self.data = np.load(config.data_train)
