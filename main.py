@@ -5,13 +5,21 @@ from yAwareContrastiveLearning import yAwareCLModel
 from losses import GeneralizedSupervisedNTXenLoss
 from torch.nn import CrossEntropyLoss
 from models.densenet import densenet121
+import argparse
 from config import Config, PRETRAINING, FINE_TUNING
 
 
 if __name__ == "__main__":
-    config = Config(PRETRAINING)
 
-    if config.mode == PRETRAINING:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--mode", type=str, choices=["pretraining", "finetuning"], required=True,
+                        help="Set the training mode. Do not forget to configure config.py accordingly !")
+    args = parser.parse_args()
+    mode = PRETRAINING if args.mode == "pretraining" else FINE_TUNING
+
+    config = Config(mode)
+
+    if config.mode == mode:
         dataset_train = MRIDataset(config, training=True)
         dataset_val = MRIDataset(config, validation=True)
     else:
