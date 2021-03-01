@@ -5,6 +5,7 @@ from yAwareContrastiveLearning import yAwareCLModel
 from losses import GeneralizedSupervisedNTXenLoss
 from torch.nn import CrossEntropyLoss
 from models.densenet import densenet121
+from models.unet import UNet
 import argparse
 from config import Config, PRETRAINING, FINE_TUNING
 
@@ -42,10 +43,19 @@ if __name__ == "__main__":
                             num_workers=config.num_cpu_workers
                             )
     if config.mode == PRETRAINING:
-        net = densenet121(mode="encoder", drop_rate=0.0)
+        if config.model == "DenseNet":
+            net = densenet121(mode="encoder", drop_rate=0.0)
+        elif config.model == "UNet":
+            net = UNet(config.num_classes, mode="simCLR")
+        else:
+            raise ValueError("Unkown model: %s"%config.model)
     else:
-        net = densenet121(mode="classifier", drop_rate=0.0, num_classes=config.num_classes)
-
+        if config.model == "DenseNet":
+            net = densenet121(mode="classifier", drop_rate=0.0, num_classes=config.num_classes)
+        elif config.model == "UNet":
+            net = UNet(config.num_classes, mode="classif")
+        else:
+            raise ValueError("Unkown model: %s"%config.model)
     if config.mode == PRETRAINING:
         loss = GeneralizedSupervisedNTXenLoss(temperature=config.temperature,
                                               kernel='rbf',

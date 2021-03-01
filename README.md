@@ -61,7 +61,7 @@ $ cd yAwareContrastiveLearning
 ```
 ### Download our pretrained model
 
-You can download our model pre-trained on BHB-10K [here](https://drive.google.com/file/d/1e75JYkaXvLQJhn0Km99iVTzB28AvErh5/view?usp=sharing). 
+You can download our DenseNet121 model pre-trained on BHB-10K [here](https://drive.google.com/file/d/1e75JYkaXvLQJhn0Km99iVTzB28AvErh5/view?usp=sharing). 
 We have used only random cutout during pre-training and we used the hyperparameters defined by default in `config.py`.
 
 ### Pretraining your own model
@@ -70,7 +70,8 @@ We have used only random cutout during pre-training and we used the hyperparamet
 Then you can directly run the main script with your configuration in `config.py` including:
 - the paths to your training/validation data
 - the proxy label you want to use during training along with the hyperparameter sigma
-```
+- the network (critic) including a base encoder and a projection head which is here a simple MLP(2)  
+``` python
 self.data_train = "/path/to/your/training/data.npy"
 self.label_train = "/path/to/your/training/metadata.csv"
 
@@ -81,6 +82,7 @@ self.input_size = (C, H, W, D) # typically (1, 121, 145, 121) for sMRI
 self.label_name = "age" # asserts "age" in metadata.csv columns 
 
 self.checkpoint_dir = "/path/to/your/saving/directory/"
+self.model = "DenseNet"
 ```
 #### Running the model
 Once you have filled `config.py` with the correct paths, you can simply run the DenseNet model with:
@@ -91,7 +93,7 @@ $ python3 main.py --mode pretraining
 
 ## Fine-tuning your model
 In order to fine-tune the model on your target task, do not forget to set the path to the downloaded file in `config.py`:
-```
+``` python
 self.pretrained_path = "/path/to/DenseNet121_BHB-10K_yAwareContrastive.pth"
 ```
 Then you can define your own Pytorch `Dataset` in  `main.py`:
@@ -101,6 +103,6 @@ dataset_val = Dataset(...)
 ``` 
 
 You can finally fine-tune your model with:
-```
+``` bash
 $ python3 main.py --mode finetuning
 ``` 

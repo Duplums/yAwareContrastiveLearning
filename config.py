@@ -23,6 +23,8 @@ class Config:
             self.sigma = 5 # depends on the meta-data at hand
             self.temperature = 0.1
             self.tf = "all_tf"
+            self.model = "DenseNet"
+
 
             # Paths to the data
             self.data_train = "/home_local/bd261576/all_datasets/cat12/ixi_t1mri_mwp1_gs-raw_data64.npy" #"/path/to/your/training/data.npy"
@@ -51,3 +53,4 @@ class Config:
 
             self.pretrained_path = "/path/to/model.pth"
             self.num_classes = 2
+            self.model = "DenseNet"
