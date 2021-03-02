@@ -47,10 +47,13 @@ We also pre-processed the T1-MRI scan with CAT12 toolbox and all the images pass
 [ADNI-GO](http://adni.loni.usc.edu/about/adni-go)  | 387 | <p>Alzheimer<br>Control</p> | <p>75 ± 8<br>75 ± 5</p>  | <p>52<br>51</p>  | <p>57<br>57</p> 
 [SCHIZCONNECT-VIP](http://schizconnect.org) | 605 | <p>Schizophrenia<br>Control</p> | <p>34 ± 12<br>32 ± 12</p>  | <p>27<br>47</p>  | <p>4<br>4</p>  
 
-## Main Results
+## Representation Quality
+### Unsupervised Results
+![Alt text](images/unsupervised_perf_scz_bip_ad_N10K.png)
 
-![Alt text](images/unsupervised_perf.png)
+### UMAP Visualization
 
+![Alt text](images/UMAP_contrastive-age-aware.png)
 
 
 ## Pre-training
