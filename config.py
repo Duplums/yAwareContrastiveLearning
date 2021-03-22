@@ -27,12 +27,11 @@ class Config:
 
 
             # Paths to the data
-            self.data_train = "/home_local/bd261576/all_datasets/cat12/ixi_t1mri_mwp1_gs-raw_data64.npy" #"/path/to/your/training/data.npy"
-            self.label_train = "/home_local/bd261576/all_datasets/cat12/ixi_t1mri_mwp1_participants.csv" #"/path/to/your/training/metadata.csv"
-            #self.label_train = "/path/to/your/training/metadata.csv"
+            self.data_train = "/path/to/your/training/data.npy"
+            self.label_train = "/path/to/your/training/metadata.csv"
 
-            self.data_val = "/home_local/bd261576/all_datasets/cat12/ixi_t1mri_mwp1_gs-raw_data64.npy"
-            self.label_val = "/home_local/bd261576/all_datasets/cat12/ixi_t1mri_mwp1_participants.csv"
+            self.data_val = "/path/to/your/validation/data.npy"
+            self.label_val = "/path/to/your/validation/metadata.csv"
 
             self.input_size = (1, 121, 145, 121)
             self.label_name = "age"
