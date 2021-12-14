@@ -1,5 +1,5 @@
 # y-Aware Contrastive Learning 
-Official Pytorch Implementation for y-Aware Contrastive Learning (*MICCAI 2021*) [paper](https://hal.telecom-paris.fr/hal-03262256/document)
+Official Pytorch Implementation for y-Aware Contrastive Learning (*MICCAI 2021*) [[paper]](https://hal.telecom-paris.fr/hal-03262256/document)
 
 We propose an extension of the popular InfoNCE loss used in contrastive learning (SimCLR, MoCo, etc.) to the weakly supervised case where auxiliary information *y* is available for each image *x* (e.g subject's age or sex for medical images). We demonstrate a better data representation with our new loss, namely y-Aware InfoNCE. 
 
