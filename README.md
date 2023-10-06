@@ -66,7 +66,7 @@ $ cd yAwareContrastiveLearning
 ```
 ### Download our pretrained model
 
-You can download our DenseNet121 model pre-trained on BHB-10K [here](https://drive.google.com/file/d/1e75JYkaXvLQJhn0Km99iVTzB28AvErh5/view?usp=sharing). 
+You can download our DenseNet121 model pre-trained on BHB-10K [here](https://drive.google.com/file/d/1BmDC4USdZmX0ZSi-jQyUVmKHaDFIJFo2/view?usp=drive_link). 
 We have used only random cutout during pre-training and we used the hyperparameters defined by default in `config.py`.
 
 ### Pretraining your own model
